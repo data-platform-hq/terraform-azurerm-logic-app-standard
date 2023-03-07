@@ -62,8 +62,8 @@ resource "azurerm_logic_app_standard" "this" {
     type         = var.identity_ids == null ? "SystemAssigned" : "SystemAssigned, UserAssigned"
     identity_ids = var.identity_ids
   }
-  storage_account_name       = var.log_storage_name
-  storage_account_access_key = var.log_storage_access_key
+  storage_account_name       = var.storage_account.name
+  storage_account_access_key = var.storage_account.access_key
   version                    = var.runtime_version
   tags                       = var.tags
   site_config {

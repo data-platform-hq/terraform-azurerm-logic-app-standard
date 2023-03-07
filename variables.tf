@@ -29,25 +29,9 @@ variable "service_plan_id" {
   description = "App Service plan ID"
 }
 
-variable "log_storage_name" {
-  type        = string
-  description = "Logs storage account name"
-}
-
-variable "log_storage_access_key" {
-  type        = string
-  description = "Logs storage Account access key"
-}
-
-variable "log_storage_id" {
-  type        = string
-  description = "Logs storage account ID (to set permissions on it)"
-  default     = null
-}
-
 variable "name" {
   type        = string
-  description = "Function index/name (like 007)"
+  description = "Logic app name"
 }
 
 variable "application_type" {
@@ -56,16 +40,8 @@ variable "application_type" {
   default     = "web"
 }
 
-variable "application_stack" {
-  type        = map(string)
-  description = "Application stack"
-  default = {
-    java_version = "11"
-  }
-}
-
 variable "ip_restriction" {
-  description = "Firewall settings for the function app"
+  description = "Firewall settings for the logic app"
   type = list(object({
     name                      = string
     ip_address                = string
@@ -99,22 +75,10 @@ variable "app_settings" {
   description = "Application setting"
 }
 
-variable "azure_rbac" {
-  type        = list(map(string))
-  description = "Azure RBAC permision map (scope, role)"
-  default     = []
-}
-
 variable "subnet_id" {
   type        = string
-  description = "Subnet ID for the function app"
+  description = "Subnet ID for the logic app"
   default     = null
-}
-
-variable "use_private_net" {
-  type        = bool
-  description = "Use private network injection"
-  default     = false
 }
 
 variable "identity_ids" {
@@ -141,12 +105,6 @@ variable "analytics_destination_type" {
   default     = "Dedicated"
 }
 
-variable "enable_diagnostic_setting" {
-  type        = bool
-  description = "Enable diagnostic setting. var.analytics_workspace_id must be provided"
-  default     = false
-}
-
 variable "use_extension_bundle" {
   type        = bool
   description = "Use extension bundle"
@@ -166,6 +124,7 @@ variable "enabled" {
 }
 
 variable "site_config" {
+  description = "Site config for the Logic app"
   type = object({
     always_on          = optional(bool, false)
     ftps_state         = optional(string, "Disabled")
@@ -187,4 +146,12 @@ variable "runtime_version" {
   type        = string
   description = "The runtime version associated with the Logic App"
   default     = "~4"
+}
+
+variable "storage_account" {
+  description = "Storage account for the Logic app"
+  type = object({
+    name     = string
+    access_key = string
+  })
 }
