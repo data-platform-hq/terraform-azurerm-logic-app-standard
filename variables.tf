@@ -151,7 +151,7 @@ variable "runtime_version" {
 variable "storage_account" {
   description = "Storage account for the Logic app"
   type = object({
-    name     = string
+    name       = string
     access_key = string
   })
 }
