@@ -155,3 +155,9 @@ variable "storage_account" {
     access_key = string
   })
 }
+
+variable "use_private_net" {
+  type        = bool
+  description = "Use private network injection"
+  default     = false
+}
