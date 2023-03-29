@@ -148,6 +148,18 @@ variable "runtime_version" {
   default     = "~4"
 }
 
+variable "worker_runtime" {
+  type        = string
+  description = "The runtime version associated with the Logic App"
+  default     = "node"
+}
+
+variable "node_version" {
+  type        = string
+  description = "The runtime version associated with the Logic App"
+  default     = "~14"
+}
+
 variable "storage_account" {
   description = "Storage account for the Logic app"
   type = object({
@@ -160,4 +172,22 @@ variable "use_private_net" {
   type        = bool
   description = "Use private network injection"
   default     = false
+}
+
+variable "log_level" {
+  type        = string
+  description = "Log level"
+  default     = "info"
+}
+
+variable "disable_homepage" {
+  type        = bool
+  description = "A value of true disables the default landing page that is shown for the root URL of a logic app"
+  default     = true
+}
+
+variable "use_placeholder" {
+  type        = string
+  description = "Indicates whether to use a specific cold start optimization when running on the Consumption plan. Set to 0 to disable the cold-start optimization on the Consumption plan."
+  default     = "0"
 }
