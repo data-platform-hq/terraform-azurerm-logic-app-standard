@@ -1,5 +1,5 @@
-# Azure <> Terraform module
-Terraform module for create and manage Azure Logic App Standard
+# Azure Azure Logic App Standard Terraform module
+Terraform module for creation and management Azure Logic App Standard
 
 ## Usage
 
@@ -40,6 +40,7 @@ No modules.
 | <a name="input_app_settings"></a> [app\_settings](#input\_app\_settings) | Application setting | `map(string)` | `{}` | no |
 | <a name="input_application_type"></a> [application\_type](#input\_application\_type) | Application type (java, python, etc) | `string` | `"web"` | no |
 | <a name="input_bundle_version"></a> [bundle\_version](#input\_bundle\_version) | If use\_extension\_bundle then controls the allowed range for bundle versions | `string` | `"[1.*, 2.0.0)"` | no |
+| <a name="input_disable_homepage"></a> [disable\_homepage](#input\_disable\_homepage) | A value of true disables the default landing page that is shown for the root URL of a logic app | `bool` | `true` | no |
 | <a name="input_enable_appinsights"></a> [enable\_appinsights](#input\_enable\_appinsights) | Enable application insights | `bool` | `true` | no |
 | <a name="input_enabled"></a> [enabled](#input\_enabled) | Enable or disable the Logic app | `bool` | `true` | no |
 | <a name="input_env"></a> [env](#input\_env) | Environment | `string` | n/a | yes |
@@ -47,16 +48,21 @@ No modules.
 | <a name="input_identity_ids"></a> [identity\_ids](#input\_identity\_ids) | List of user assigned identity IDs | `list(string)` | `null` | no |
 | <a name="input_ip_restriction"></a> [ip\_restriction](#input\_ip\_restriction) | Firewall settings for the logic app | <pre>list(object({<br>    name                      = string<br>    ip_address                = string<br>    service_tag               = string<br>    virtual_network_subnet_id = string<br>    priority                  = string<br>    action                    = string<br>    headers = list(object({<br>      x_azure_fdid      = list(string)<br>      x_fd_health_probe = list(string)<br>      x_forwarded_for   = list(string)<br>      x_forwarded_host  = list(string)<br>    }))<br>  }))</pre> | <pre>[<br>  {<br>    "action": "Allow",<br>    "headers": null,<br>    "ip_address": null,<br>    "name": "allow_azure",<br>    "priority": "100",<br>    "service_tag": "AzureCloud",<br>    "virtual_network_subnet_id": null<br>  }<br>]</pre> | no |
 | <a name="input_location"></a> [location](#input\_location) | Location | `string` | n/a | yes |
+| <a name="input_log_level"></a> [log\_level](#input\_log\_level) | Log level | `string` | `"info"` | no |
 | <a name="input_name"></a> [name](#input\_name) | Logic app name | `string` | n/a | yes |
+| <a name="input_node_version"></a> [node\_version](#input\_node\_version) | The runtime version associated with the Logic App | `string` | `"~14"` | no |
 | <a name="input_project"></a> [project](#input\_project) | Project name | `string` | n/a | yes |
 | <a name="input_resource_group"></a> [resource\_group](#input\_resource\_group) | Resource group name | `string` | n/a | yes |
 | <a name="input_runtime_version"></a> [runtime\_version](#input\_runtime\_version) | The runtime version associated with the Logic App | `string` | `"~4"` | no |
 | <a name="input_service_plan_id"></a> [service\_plan\_id](#input\_service\_plan\_id) | App Service plan ID | `string` | n/a | yes |
 | <a name="input_site_config"></a> [site\_config](#input\_site\_config) | Site config for the Logic app | <pre>object({<br>    always_on          = optional(bool, false)<br>    ftps_state         = optional(string, "Disabled")<br>    http2_enabled      = optional(bool, true)<br>    websockets_enabled = optional(bool, false)<br>    use_32_bit_worker  = optional(bool, false)<br>    }<br>  )</pre> | `{}` | no |
-| <a name="input_storage_account"></a> [storage\_account](#input\_storage\_account) | Storage account for the Logic app | <pre>object({<br>    name     = string<br>    access_key = string<br>  })</pre> | n/a | yes |
+| <a name="input_storage_account"></a> [storage\_account](#input\_storage\_account) | Storage account for the Logic app | <pre>object({<br>    name       = string<br>    access_key = string<br>  })</pre> | n/a | yes |
 | <a name="input_subnet_id"></a> [subnet\_id](#input\_subnet\_id) | Subnet ID for the logic app | `string` | `null` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags | `map(string)` | n/a | yes |
 | <a name="input_use_extension_bundle"></a> [use\_extension\_bundle](#input\_use\_extension\_bundle) | Use extension bundle | `bool` | `true` | no |
+| <a name="input_use_placeholder"></a> [use\_placeholder](#input\_use\_placeholder) | Indicates whether to use a specific cold start optimization when running on the Consumption plan. Set to 0 to disable the cold-start optimization on the Consumption plan. | `string` | `"0"` | no |
+| <a name="input_use_private_net"></a> [use\_private\_net](#input\_use\_private\_net) | Use private network injection | `bool` | `false` | no |
+| <a name="input_worker_runtime"></a> [worker\_runtime](#input\_worker\_runtime) | The runtime version associated with the Logic App | `string` | `"node"` | no |
 
 ## Outputs
 
