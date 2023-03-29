@@ -1,5 +1,5 @@
-# Azure <> Terraform module
-Terraform module for create and manage Azure Logic App Standard
+# Azure Azure Logic App Standard Terraform module
+Terraform module for creation and management Azure Logic App Standard
 
 ## Usage
 
